@@ -66,6 +66,34 @@ def check_directories():
         os.makedirs(jupyter_nbext)
 
 
+def get_themes():
+    """ return list of available themes """
+    styles_dir = os.path.join(package_dir, 'styles')
+    styles_dir_user = os.path.join(user_dir, 'styles')
+
+    # Package directory
+    themes = [os.path.basename(theme).replace('.less', '')
+              for theme in glob('{0}/*.less'.format(styles_dir))]
+
+    # User directory
+    themes += [os.path.basename(theme).replace('.less', '')
+               for theme in glob('{0}/*.less'.format(styles_dir_user))]
+
+    return themes
+
+
+def get_theme_css_path(name):
+    compiled_dir = os.path.join(styles_dir, 'compiled')
+    compiled_dir_user = os.path.join(styles_dir_user, 'compiled')
+
+    themes_package = glob('{0}/{1}.css'.format(compiled_dir, name))
+    themes_user = glob('{0}/{1}.css'.format(compiled_dir_user, name))
+
+    themes = themes_package + themes_user
+
+    return themes[0]
+
+
 def less_to_css(style_less):
     """ write less-compiled css file to jupyter_customcss in jupyter_dir
     """
@@ -79,6 +107,17 @@ def less_to_css(style_less):
 def write_final_css(style_css):
     # install style_css to .jupyter/custom/custom.css
     with fileOpen(jupyter_customcss, 'w') as custom_css:
+        custom_css.write(style_css)
+
+def write_compiled_css(style_css, theme_name):
+    # Get user compiled directory
+    compiled_dir_user = os.path.join(styles_dir_user, 'compiled')
+
+    # Get theme filename
+    compiled_theme_file = os.path.join(compiled_dir_user, theme_name + '.css')
+
+    # install style_css to .jupyter-themes/styles/
+    with fileOpen(compiled_theme_file, 'w+') as custom_css:
         custom_css.write(style_css)
 
 
@@ -235,6 +274,8 @@ def style_layout(style_less,
                  hideprompt=False):
     """Set general layout and style properties of text and code cells"""
 
+    print(theme)
+
     # write theme name to ~/.jupyter/custom/ (referenced by jtplot.py)
     with fileOpen(theme_name_file, 'w') as f:
         f.write(theme)
@@ -246,6 +287,8 @@ def style_layout(style_less,
     else:
         theme_relpath = os.path.relpath(
             os.path.join(styles_dir, theme), package_dir)
+
+    print(theme_relpath)
 
     style_less += '@import "{}";\n'.format(theme_relpath)
 
@@ -474,8 +517,15 @@ def reset_default(verbose=False):
 def set_nb_theme(name):
     """Set theme from within notebook """
     from IPython.core.display import HTML
-    styles_dir = os.path.join(package_dir, 'styles/compiled/')
-    css_path = glob('{0}/{1}.css'.format(styles_dir, name))[0]
+
+    theme_list = get_themes()
+    assert name in theme_list, 'Style %s not found!' % name
+
+    css_path = get_theme_css_path(name)
+    print(css_path)
+
+    # styles_dir = os.path.join(package_dir, 'styles/compiled/')
+    # css_path = glob('{0}/{1}.css'.format(styles_dir, name))[0]
     customcss = open(css_path, "r").read()
 
     return HTML(''.join(['<style> ', customcss, ' </style>']))
@@ -511,7 +561,6 @@ def get_alt_prompt_text_color(theme):
                  'chesterish': '#0b98c8',
                  'onedork': '#94c273',
                  'monokai': '#94c273'}
-
     return altColors[theme]
 
 

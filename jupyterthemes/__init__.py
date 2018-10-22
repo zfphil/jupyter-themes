@@ -5,8 +5,14 @@ from glob import glob
 from . import stylefx
 from . import jtplot
 
+from .stylefx import get_themes
+
 # path to local site-packages/jupyterthemes
 package_dir = os.path.dirname(os.path.realpath(__file__))
+
+# path to user jupyter-themes dir
+user_dir = os.path.join(os.path.expanduser('~'), '.jupyter-themes')
+
 modules = glob(os.path.dirname(__file__) + "/*.py")
 __all__ = [os.path.basename(f)[:-3] for f in modules]
 
@@ -15,14 +21,6 @@ minor = 19
 patch = 6
 
 __version__ = '.'.join([str(v) for v in [major, minor, patch]])
-
-
-def get_themes():
-    """ return list of available themes """
-    styles_dir = os.path.join(package_dir, 'styles')
-    themes = [os.path.basename(theme).replace('.less', '')
-              for theme in glob('{0}/*.less'.format(styles_dir))]
-    return themes
 
 
 def install_theme(theme=None,
@@ -107,6 +105,9 @@ def install_theme(theme=None,
 
     # install style_css to .jupyter/custom/custom.css
     stylefx.write_final_css(style_css)
+
+    # install style.css to custom directory
+    stylefx.write_compiled_css(style_css, theme)
 
     # change back to original working directory
     os.chdir(wkdir)
