@@ -1,4 +1,4 @@
-solarizedl@import "styles/solarizedl";
+gruvboxl@import "styles/gruvboxl";
 @container-margins: auto;
 @cell-width: 980px; 
 @cc-line-height: 170%; 
@@ -11,7 +11,7 @@ solarizedl@import "styles/solarizedl";
 @prompt-border: 2px solid @prompt-line; 
 @prompt-min-width: 11.5ex; 
 @out-prompt-min-width: 11.5ex; 
-@tc-prompt-width: 14.5ex; 
+@tc-prompt-width: 11.5ex; 
 @tc-prompt-border: 2px solid @tc-prompt-std; 
 @cursor-width: 2px; 
 @cursor-info: @cursor-width solid default; 

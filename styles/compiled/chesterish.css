@@ -1,21 +1,21 @@
-solarizedl@import "styles/solarizedl";
+chesterish@import "styles/chesterish";
 @container-margins: auto;
-@cell-width: 980px; 
-@cc-line-height: 170%; 
+@cell-width: 980px;
+@cc-line-height: 170%;
 @text-cell-bg: @cc-input-bg; 
-@cc-prompt-width: 11.5ex; 
-@cc-prompt-bg: @cc-input-bg; 
-@cc-output-bg: @cc-output-bg-default; 
-@prompt-text: @input-prompt; 
-@prompt-padding: .25em; 
-@prompt-border: 2px solid @prompt-line; 
-@prompt-min-width: 11.5ex; 
-@out-prompt-min-width: 11.5ex; 
-@tc-prompt-width: 14.5ex; 
-@tc-prompt-border: 2px solid @tc-prompt-std; 
-@cursor-width: 2px; 
-@cursor-info: @cursor-width solid default; 
-@tc-prompt-fontsize: @prompt-fontsize; 
+@cc-prompt-width: 11.5ex;
+@cc-prompt-bg: @cc-input-bg;
+@cc-output-bg: @cc-output-bg-default;
+@prompt-text: @input-prompt;
+@prompt-padding: .25em;
+@prompt-border: 2px solid @prompt-line;
+@prompt-min-width: 11.5ex;
+@out-prompt-min-width: 11.5ex;
+@tc-prompt-width: 11.5ex;
+@tc-prompt-border: 2px solid @tc-prompt-std;
+@cursor-width: 2px;
+@cursor-info: @cursor-width solid default;
+@tc-prompt-fontsize: @prompt-fontsize;
 
 
 /*****************************************************************
