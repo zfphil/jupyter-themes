@@ -522,13 +522,15 @@ def set_nb_theme(name):
     assert name in theme_list, 'Style %s not found!' % name
 
     css_path = get_theme_css_path(name)
-    print(css_path)
-
-    # styles_dir = os.path.join(package_dir, 'styles/compiled/')
-    # css_path = glob('{0}/{1}.css'.format(styles_dir, name))[0]
-    customcss = open(css_path, "r").read()
 
     return HTML(''.join(['<style> ', customcss, ' </style>']))
+
+
+def refresh():
+    """Set theme from within notebook """
+    from IPython.core.display import HTML
+
+    return HTML(''.join(['<style> ', jupyter_customcss, ' </style>']))
 
 
 def get_colors(theme='grade3', c='default', get_dict=False):
