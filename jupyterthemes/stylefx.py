@@ -110,15 +110,17 @@ def write_final_css(style_css):
         custom_css.write(style_css)
 
 def write_compiled_css(style_css, theme_name):
-    # Get user compiled directory
-    compiled_dir_user = os.path.join(styles_dir_user, 'compiled')
+    if theme_name is not None:
+        # Get user compiled directory
+        compiled_dir_user = os.path.join(styles_dir_user, 'compiled')
 
-    # Get theme filename
-    compiled_theme_file = os.path.join(compiled_dir_user, theme_name + '.css')
+        # Get theme filename
+        compiled_theme_file = os.path.join(compiled_dir_user, theme_name + '.css')
 
-    # install style_css to .jupyter-themes/styles/
-    with fileOpen(compiled_theme_file, 'w+') as custom_css:
-        custom_css.write(style_css)
+        # install style_css to .jupyter-themes/styles/
+        if os.path.exists(compiled_theme_file):
+            with fileOpen(compiled_theme_file, 'w+') as custom_css:
+                custom_css.write(style_css)
 
 
 def install_precompiled_theme(theme):
@@ -408,7 +410,6 @@ def toggle_settings(
 
 
 def proxima_nova_imports(style_less):
-
     style_less += """@font-face {
         font-family: 'Proxima Nova Bold';
         src: url('fonts/Proxima Nova Alt Bold-webfont.eot');
