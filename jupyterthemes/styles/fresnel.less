@@ -1,4 +1,4 @@
-/* fresnel base colors */
+/* monokai base colors */
 @yellow:                #E6DB74;
 @orange:                #FD971F;
 @red:                   #F92672;
@@ -7,6 +7,7 @@
 @blue:                  #66D9EF;
 @cyan:                  #529B2F;
 @green:                 #A6E22E;
+@white:                 #FFFFFF;
 @code-gray:             #6a737d;
 @code-fg:               #B5C2D9;
 @code-yellow:           @yellow;
@@ -16,17 +17,19 @@
 @code-blue:             @blue;
 @code-orange:           @orange;
 @code-cyan:             @cyan;
+@theme-flavor:          #000000;
+@theme-flavor-inverse:  #ffffff;
 
-/* fresnel notebook colors */
-@notebook-bg:           #1E1E1E;
-@notebook-fg:           #F8F8F0;
+/* monokai notebook colors */
+@notebook-bg:           #000000;
+@notebook-fg:           #FFFFFF;
 @notebook-base:         #2f2f2f;
 
 /* jtplot figure style */
-@axisFace:              #232323;
-@figureFace:            #232323;
-@textColor:             #BBBBBB;
-@edgeColor:             #888888;
+@axisFace:              #111111;
+@figureFace:            #111111;
+@textColor:             #FFFFFF;
+@edgeColor:             #FFFFFF;
 @gridColor:             #303030;
 
 /* selection, hover, prompts, brackets colors */
@@ -42,13 +45,13 @@
 @unemphasize-fg:        #888;
 
 /* code, text, markdown, & tooltip colors */
-@cc-input-bg:           #282828;
+@cc-input-bg:           #171717;
 @cc-input-fg:           #F8F8F0;
-@cc-output-bg-default:  #232323;
+@cc-output-bg-default:  #111111;
 @cc-output-fg:          #CCCCCC;
 @text-cell-fg:          #F8F8F0;
-@unrendered-text:       @green;
-@header-fg:             @green;
+@unrendered-text:       @white;
+@header-fg:             @white;
 @tooltip-bg-color:      #282828;
 @tooltip-fg-color:      @cc-input-fg;
 @nb-name-fg:            @green;
@@ -110,7 +113,7 @@
 @df-header:             #CCCCCC;
 @df-header-border:      #49483E;
 @df-cell-bg:            #282828;
-@codeblock-bg:          #282828;
+@codeblock-bg:          #171717;
 @codeblock-border:      @codeblock-bg;
 
 /* btn, scrollbar and shadow colors */
@@ -130,7 +133,7 @@
 @box-shadow:            #49483E;
 @md-header-link:        rgba(0,0,0,.32);
 
-/* fresnel ansi colors */
+/* monokai ansi colors */
 @ansiblack:             #282828;
 @ansiblue:              @blue;
 @ansigray:              #888;
@@ -143,7 +146,7 @@
 @stderr-fg:             #F8F8F2;
 @js-error:              @red;
 
-/* fresnel codemirror colors */
+/* monokai codemirror colors */
 @cm-selected:           #49483E;
 @cm-gutters:            @cm-selected;
 @cm-linenumber:         @disabled;

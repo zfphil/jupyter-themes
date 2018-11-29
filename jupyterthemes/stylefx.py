@@ -524,6 +524,8 @@ def set_nb_theme(name):
 
     css_path = get_theme_css_path(name)
 
+    customcss = open(css_path, "r").read()
+
     return HTML(''.join(['<style> ', customcss, ' </style>']))
 
 

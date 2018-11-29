@@ -11,7 +11,7 @@ fresnel@import "styles/fresnel";
 @prompt-border: 2px solid @prompt-line; 
 @prompt-min-width: 11.5ex; 
 @out-prompt-min-width: 11.5ex; 
-@tc-prompt-width: 11.5ex; 
+@tc-prompt-width: 14.5ex; 
 @tc-prompt-border: 2px solid @tc-prompt-std; 
 @cursor-width: 2px; 
 @cursor-info: @cursor-width solid default; 
@@ -27,6 +27,7 @@ div#notebook {
     line-height: @cc-line-height;
     color: @cc-input-fg;
     -webkit-font-smoothing: antialiased !important;
+    padding-top: 25px !important;
 }
 body,
 div.body {
@@ -53,7 +54,27 @@ a:hover, a:focus {
     color: @selected-fg;
     -webkit-font-smoothing: antialiased !important;
 }
-
+div#maintoolbar {
+    position: absolute;
+    width: 90%;
+    margin-left: -10%;
+    padding-right: 8%;
+    float: left;
+    background: transparent !important;
+}
+#maintoolbar {
+    margin-bottom: -3px;
+    margin-top: 0px;
+    border: 0px;
+    min-height: 27px;
+    padding-top: 2px;
+    padding-bottom: 0px;
+}
+#maintoolbar .container {
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+}
 /*********************************************************/
 /*** INTRO-PAGE TOOLBAR, LIST CONTAINERS, AND NAV TABS ***/
 /*********************************************************/
@@ -674,7 +695,7 @@ div.notification_widget.info,
 }
 #notification_trusted {
     font-family: @notebook-fontfamily;
-    font-size: 17px !important;
+    // font-size: 17px !important;
     border: none;
     background: transparent;
     background-color: transparent;
@@ -688,9 +709,10 @@ div.notification_widget.info,
     float: right !important;
     position: static;
     cursor: pointer;
-    padding-top: 7px;
+    padding-top: 6px;
     padding-right: 4px;
 }
+
 div#notification_notebook.notification_widget.btn.btn-xs.navbar-btn {
     font-size: 9pt !important;
     z-index: 0;
@@ -712,7 +734,7 @@ div#notification_notebook.notification_widget.btn.btn-xs.navbar-btn {
     border-left: 2px solid @item-theme;
     padding-top: 0px;
     padding-bottom: 4px;
-    margin-top: 8px !important;
+    margin-top: 10px !important;
     margin-left: -2px;
     padding-left: 5px !important;
 }
@@ -1466,8 +1488,9 @@ div.output.output_scroll {
 
 /******* Smooth Fonts ********/
 HTML, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td, span, a {
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: subpixel-antialiased;
+    font-weight: 400;
 }
 
 
@@ -1737,11 +1760,11 @@ div.cell.text_cell.jupyter-soft-selected,
 div.cell.text_cell.selected.jupyter-soft-selected {
     border-left-color: @tc-border-edit !important;
     border-left-width: 0px !important;
-    padding-left: 7px !important;
+    padding-left: 26px !important;
     border-right-color: @tc-border-edit !important;
     border-right-width: 0px !important;
     background: @tc-border-edit !important;
-    border-radius: 6px !important;
+    border-radius: 5px !important;
 }
 
 div.cell.jupyter-soft-selected .input,
@@ -1857,6 +1880,7 @@ div.output_subarea.output_text {
     color: @cc-output-fg;
     border-top-right-radius: 0px;
     border-top-left-radius: 0px;
+    margin-left: 11.5px;
 }
 div.output_area pre {
     font-family: @monofont, monospace;
@@ -1878,7 +1902,8 @@ div.output_html {
 }
 div.output_subarea {
     overflow-x: auto;
-    padding: 0.8em !important;
+    // padding: 0.8em !important;
+    padding: 1.2em !important;
     -webkit-box-flex: 1;
     -moz-box-flex: 1;
     box-flex: 1;
@@ -1898,7 +1923,7 @@ div.btn.btn-default.output_collapsed:hover {
 /************ CODE CELL OUTPUT PROMPT ************/
 div.prompt.output_prompt {
     font-family: @monofont, monospace;
-    font-size: 9.5pt !important;
+    // font-size: 9.5pt !important;
     font-weight: bold !important;
     background-color: @cc-output-bg;
     color: transparent;
@@ -1912,7 +1937,7 @@ div.prompt.output_prompt {
 }
 div.out_prompt_overlay.prompt {
     font-family: @monofont, monospace;
-    font-size: 9.5pt !important;
+    // font-size: 9.5pt !important;
     font-weight: bold !important;
     background-color: @cc-output-bg;
     border-bottom-left-radius: 2px;
@@ -3004,6 +3029,9 @@ div#short-key-bindings-intro.well, .well {
 .terminal-app {
     background: @notebook-bg;
 }
+.terminal-app > #header {
+    background: @notebook-bg;
+}
 .terminal-app .terminal {
     font-family: @monofont, monospace;
     font-size: @monofontsize;
@@ -3352,13 +3380,24 @@ div.CodeMirror-gutter.CodeMirror-linenumber {
     color: @cm-string;
 }
 div.CodeMirror span.CodeMirror-matchingbracket {
-    color: @selected-fg-bright;
+    color: @theme-flavor-inverse;
+    font-weight: bold;
     background-color: @matching-bracket;
 }
 div.CodeMirror span.CodeMirror-nonmatchingbracket {
-    color: @selected-fg-bright;
+    color: @theme-flavor-inverse;
+    font-weight: bold;
     background: @selected-error !important;
 }
+//
+// div.CodeMirror span.CodeMirror-matchingbracket {
+//     color: @selected-fg-bright;
+//     background-color: @matching-bracket;
+// }
+// div.CodeMirror span.CodeMirror-nonmatchingbracket {
+//     color: @selected-fg-bright;
+//     background: @selected-error !important;
+// }
 
 /***********************************************/
 /**** TXT, HEADER, & MD SYNTAX HIGHLIGHTING ****/

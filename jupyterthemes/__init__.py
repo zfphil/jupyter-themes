@@ -122,20 +122,20 @@ def main():
     parser.add_argument(
         '-t',
         "--theme",
-        default=None,
+        default='fresnel',
         action='store',
         help="theme name to install")
     parser.add_argument(
         '-f',
         "--monofont",
         action='store',
-        default=None,
+        default='inconsolata',
         help='monospace code font')
     parser.add_argument(
         '-fs',
         "--monosize",
         action='store',
-        default='11',
+        default='10',
         help='code font-size')
     parser.add_argument(
         '-nf',
@@ -147,7 +147,7 @@ def main():
         '-nfs',
         "--nbfontsize",
         action='store',
-        default='13',
+        default='12',
         help='notebook fontsize')
     parser.add_argument(
         '-tf',
@@ -159,7 +159,7 @@ def main():
         '-tfs',
         "--tcfontsize",
         action='store',
-        default='13',
+        default='11',
         help='txtcell fontsize')
     parser.add_argument(
         '-dfs',
@@ -201,7 +201,7 @@ def main():
         '-cellw',
         "--cellwidth",
         action='store',
-        default='980',
+        default='95%',
         help="set cell width (px or %%)")
     parser.add_argument(
         '-lineh',
@@ -219,7 +219,7 @@ def main():
         '-altmd',
         "--altmarkdown",
         action='store_true',
-        default=False,
+        default=True,
         help="alt markdown cell style")
     parser.add_argument(
         '-altout',
