@@ -301,8 +301,8 @@ def style_layout(style_less,
     promptBorder = '2px solid @prompt-line'
     tcPromptBorder = '2px solid @tc-prompt-std'
     promptMinWidth = 11.5
-    outpromptMinWidth = promptMinWidth
-    tcPromptWidth = promptMinWidth
+    outpromptMinWidth = promptMinWidth  # remove + 3 since it will overlay output print() text
+    tcPromptWidth = promptMinWidth + 3
     tcPromptFontsize = "@prompt-fontsize"
     ccOutputBG = '@cc-output-bg-default'
 
@@ -383,8 +383,8 @@ def toggle_settings(
     else:
         toggle += 'div#maintoolbar {display: none !important;}\n'
     if nbname:
-        toggle += ('span.save_widget span.filename {margin-left: 8px;'
-                   'font-size: 120%; color: @nb-name-fg; background-color:'
+        toggle += ('span.save_widget span.filename {margin-left: 8px; height: initial;'
+                   'font-size: 100%; color: @nb-name-fg; background-color:'
                    '@cc-input-bg;}\n')
         toggle += ('span.save_widget span.filename:hover {color:'
                    '@nb-name-hover; background-color: @cc-input-bg;}\n')
