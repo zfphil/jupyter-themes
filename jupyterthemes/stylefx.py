@@ -294,7 +294,7 @@ def style_layout(style_less,
 
     style_less += '@import "{}";\n'.format(theme_relpath)
 
-    textcell_bg = '@cc-input-bg'
+    textcell_bg = '@notebook-bg'
     promptText = '@input-prompt'
     promptBG = '@cc-input-bg'
     promptPadding = '.25em'

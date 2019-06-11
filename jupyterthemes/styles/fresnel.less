@@ -1,29 +1,42 @@
-/* monokai base colors */
+/* fresnel base colors */
 @yellow:                #E6DB74;
-@orange:                #FD971F;
-@red:                   #F92672;
-@magenta:               #F92672;
+@orange:                #FD8723;
+@red:                   #FC1C17;
+@magenta:               #960FFC;
 @violet:                #AE81FF;
-@blue:                  #66D9EF;
-@cyan:                  #529B2F;
-@green:                 #A6E22E;
+@blue:                  #1589FF;
+@cyan:                  #30FEFE;
+@green:                 #32FD2C;
 @white:                 #FFFFFF;
+@black:                 #000000;
+
+/* Code Colors */
 @code-gray:             #6a737d;
 @code-fg:               #B5C2D9;
-@code-yellow:           @yellow;
-@code-red:              @red;
-@code-violet:           @violet;
-@code-green:            @green;
-@code-blue:             @blue;
-@code-orange:           @orange;
-@code-cyan:             @cyan;
-@theme-flavor:          #000000;
-@theme-flavor-inverse:  #ffffff;
+@code-yellow:           #E6DB74;
+@code-red:              #F92672;
+@code-violet:           #AE81FF;
+@code-green:            #A6E22E;
+@code-blue:             #63bfdd;
+@code-orange:           #FD971F;
+@code-cyan:             #529B2F;
 
-/* monokai notebook colors */
-@notebook-bg:           #000000;
-@notebook-fg:           #FFFFFF;
+/* Theme highlight color */
+@theme-color:           @green;
+
+/* Text color */
+@text-color:            @white;
+
+/* fresnel notebook colors */
+@notebook-bg:           @black;
+@notebook-fg:           @white;
 @notebook-base:         #2f2f2f;
+@notebook-output-bg:    #111111;
+@notebook-output-fg:    #EEEEEE;
+
+/* output color */
+@code-output-bg:         @notebook-output-bg;
+@code-input-bg:          @notebook-bg;
 
 /* jtplot figure style */
 @axisFace:              #111111;
@@ -32,41 +45,46 @@
 @edgeColor:             #FFFFFF;
 @gridColor:             #303030;
 
+/* Theme flavor */
+@theme-flavor:          @notebook-fg;
+@theme-flavor-inverse:  @notebook-bg;
+
 /* selection, hover, prompts, brackets colors */
-@selected-bg:           #49483E;
+@selected-bg:           @notebook-bg;
 @selected-half:         rgba(93,92,82,.5);
 @selected-third:        rgba(93,92,82,.25);
 @selected-tenth:        rgba(93,92,82,.1);
 @selected-error:        rgba(249,38,114,.4);
-@selected-active:       @green;
+@selected-active:       @theme-color;
 @navbar-selected:       @selected-bg;
-@selected-fg:           #F8F8F0;
-@selected-fg-bright:    #F8F8F2;
-@unemphasize-fg:        #888;
+@selected-fg:           @theme-color;
+@selected-fg-bright:    @selected-bg;
+@unemphasize-fg:        @notebook-output-bg;
 
 /* code, text, markdown, & tooltip colors */
-@cc-input-bg:           #171717;
-@cc-input-fg:           #F8F8F0;
-@cc-output-bg-default:  #111111;
-@cc-output-fg:          #CCCCCC;
-@text-cell-fg:          #F8F8F0;
-@unrendered-text:       @white;
-@header-fg:             @white;
+@cc-input-bg:           @code-input-bg; // code input Background
+@cc-input-fg:           @notebook-fg;
+@cc-output-bg-default:  @code-output-bg; // result output background
+@cc-output-fg:          @notebook-output-fg;
+@text-cell-fg:          @text-color;
+@text-cell-bg:          @text-color;
+@unrendered-text:       @text-color;
+@header-fg:             @theme-color;
 @tooltip-bg-color:      #282828;
 @tooltip-fg-color:      @cc-input-fg;
-@nb-name-fg:            @green;
-@nb-name-hover:         @green;
+@nb-name-fg:            @theme-color;
+@nb-name-hover:         @theme-color;
 
 /* cell border colors */
-@cc-border-selected:    #57564b;
-@cc-border-edit:        #33322b;
-@tc-border-selected:    @cc-border-selected;
-@tc-border-edit:        @cc-border-edit;
+@cc-border-selected:    @white;
+@cc-border-edit:        @theme-color;
+@tc-border-selected:    @white;
+@tc-border-edit:        @white;
 
 /* menus, dividers, prompt-borders, brackets */
 @divider:               rgba(148, 204, 114, .2);
-@disabled:              #75715E;
-@input-prompt:          @disabled;
+@disabled:              @white;
+@input-prompt:          @disabled; // In [1] prompt
 @input-hover-bg:        #282828;
 @prompt-hover-color:    @disabled;
 @prompt-line:           #49483e;
@@ -74,7 +92,7 @@
 @matching-bracket:      #49483E;
 @menubar-bg:            darken(@notebook-bg, 3%);
 @menubar-fg:            @notebook-fg;
-@menubar-hover:         @dropdown-bg;
+@menubar-hover:         darken(@notebook-bg, 3%);
 @nb-header-bg:          @item-theme;
 @nb-header-fg:          @notebook-fg;
 @dropdown-bg:           #383838;
@@ -93,20 +111,23 @@
 @cmd-palette-hover:     #2b3850;
 
 /* buttons, widgets, kernels colors */
-@item-theme:            @green;
-@item-blue:             @violet;
-@item-cyan:             @blue;
-@item-green:            @green;
-@item-red:              @red;
-@item-orange:           @orange;
+@item-theme:            @theme-color;
+@item-blue:             @code-blue;
+@item-cyan:             @code-cyan;
+@item-green:            @code-green;
+@item-red:              @code-red;
+@item-orange:           @code-orange;
 
 @item-danger:           #e74c3c;
 @item-success:          #83a83b;
 @item-info:             #3498db;
 @item-warning:          #ff914d;
 
+/* Latex color */
+@latex-color:           @text-color;
+
 /* tables and dataframes colors */
-@table-color:           #CCCCCC;
+@table-color:           @cc-output-fg;
 @table-bg:              #282828;
 @table-border:          #49483E;
 @df-header-bg:          #1e1e1e;
@@ -120,54 +141,53 @@
 @button-bg:             @notebook-base;
 @button-border:         @button-bg;
 @button-color:          @notebook-fg;
-@button-hover:          @green;
+@button-hover:          @theme-color;
 @button-hover-bg:       darken(@button-bg, 2%);
 @button-hover-border:   @button-hover-bg;
 @button-focus-bg:       #546745;
-@button-focus-fg:       @green;
+@button-focus-fg:       @theme-color;
 @button-panel-bg:       @panel-header-bg;
 @button-panel-hover:    darken(@panel-header-bg, 2%);
 @scrollbar:             #49483E;
 @scroll-trough:         #2d2d2d;
 @scrollbar-inactive:    #49483E;
 @box-shadow:            #49483E;
-@md-header-link:        rgba(0,0,0,.32);
+@md-header-link:        rgba(0, 0, 0, .32);
 
-/* monokai ansi colors */
+/* ansi colors */
 @ansiblack:             #282828;
 @ansiblue:              @blue;
-@ansigray:              #888;
-@ansigreen:             @green;
-@ansipurple:            @violet;
-@ansicyan:              @blue;
-@ansiyellow:            @yellow;
-@ansired:               @red;
-@stderr-bg:             @red;
+@ansigray:              @code-gray;
+@ansigreen:             @code-green;
+@ansipurple:            @code-violet;
+@ansicyan:              @code-blue;
+@ansiyellow:            @code-yellow;
+@ansired:               @code-red;
+@stderr-bg:             @code-red;
 @stderr-fg:             #F8F8F2;
-@js-error:              @red;
+@js-error:              @code-red;
 
-/* monokai codemirror colors */
+/* codemirror colors */
 @cm-selected:           #49483E;
 @cm-gutters:            @cm-selected;
 @cm-linenumber:         @disabled;
 @cm-comment:            #75715E;
-@cm-atom:               @violet;
-@cm-number:             @violet;
-@cm-property:           @green;
-@cm-attribute:          @green;
-@cm-keyword:            @red;
-@cm-string:             @yellow;
-@cm-meta:               @orange;
-@cm-operator:           @green;
-@cm-builtin:            @green;
+@cm-atom:               @code-violet;
+@cm-number:             @code-violet;
+@cm-property:           @code-green;
+@cm-attribute:          @code-green;
+@cm-keyword:            @code-red;
+@cm-string:             @code-yellow;
+@cm-meta:               @code-orange;
+@cm-operator:           @code-green;
+@cm-builtin:            @code-green;
 @cm-variable:           @cc-input-fg;
-@cm-variable2:          @green;
-@cm-variable3:          @orange;
-
-@cm-def:                @green;
+@cm-variable2:          @code-green;
+@cm-variable3:          @code-orange;
+@cm-def:                @code-green;
 @cm-error:              @selected-error;
-@cm-tag:                @violet;
-@cm-link:               @green;
-@cm-storage:            @violet;
-@cm-entity:             @green;
-@cm-latex:              #529B2F;
+@cm-tag:                @code-violet;
+@cm-link:               @code-green;
+@cm-storage:            @code-violet;
+@cm-entity:             @code-green;
+@cm-latex:              @latex-color;
